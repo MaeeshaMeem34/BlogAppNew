@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { View, StyleSheet, AsyncStorage } from "react-native";
 import { Text, Card, Button, Avatar, Header } from "react-native-elements";
-import { FontAwesome, Feather, AntDesign } from "@expo/vector-icons";
+
 import { AuthContext } from "../providers/AuthProvider";
+
 const NotificationScreen = (props) => {
   return (
     <AuthContext.Consumer>

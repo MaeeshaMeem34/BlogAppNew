@@ -12,15 +12,19 @@ import PostScreen from "./src/screens/IndividualPostScreen";
 
 import { AuthContext, AuthProvider } from "./src/providers/AuthProvider";
 
-import { Entypo, AntDesign, Ionicons } from "@expo/vector-icons";
+import {
+  Entypo,
+  AntDesign,
+  Ionicons,
+  FontAwesome,
+  MaterialCommunityIcons,
+} from "@expo/vector-icons";
 
 const AuthStack = createStackNavigator();
 const HomeTab = createMaterialBottomTabNavigator();
 const AppDrawer = createDrawerNavigator();
 
 const PostStack = createStackNavigator();
-const NotificationStack = createStackNavigator();
-
 const PostStackScreen = () => {
   return (
     <PostStack.Navigator initialRouteName="Home">
@@ -29,17 +33,44 @@ const PostStackScreen = () => {
         component={HomeScreen}
         options={{ headerShown: false }}
       />
-      <PostStack.Screen name="IPost" component={PostScreen}
-      options={{ headerShown: false }} />
+      <PostStack.Screen
+        name="IPost"
+        component={PostScreen}
+        options={{ headerShown: false }}
+      />
     </PostStack.Navigator>
   );
 };
 
 const AppDrawerScreen = () => {
   return (
-    <AppDrawer.Navigator>
-      <AppDrawer.Screen name="Home" component={HomeTabScreen} />
-      <AppDrawer.Screen name="Profile" component={ProfileScreen} />
+    <AppDrawer.Navigator initialRouteName="Home">
+      <AppDrawer.Screen
+        name="Home"
+        options={{
+          headerShown: false,
+
+          drawerIcon: ({ color, size }) => (
+            <FontAwesome name="home" color="blue" size={22} />
+          ),
+        }}
+        component={HomeTabScreen}
+      />
+      <AppDrawer.Screen
+        name="Profile"
+        options={{
+          headerShown: false,
+
+          drawerIcon: ({ color, size }) => (
+            <MaterialCommunityIcons
+              name="face-profile"
+              size={22}
+              color="blue"
+            />
+          ),
+        }}
+        component={ProfileScreen}
+      />
     </AppDrawer.Navigator>
   );
 };

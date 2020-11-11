@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { View } from "react-native";
 import { Card, Button, Text, Avatar } from "react-native-elements";
 import { AntDesign } from "@expo/vector-icons";
-import { AuthContext } from "../providers/AuthProvider";
+
+import { getDataJSON } from "../functions/AsyncStorageFunctions";
+import { useIsFocused } from '@react-navigation/native';
 
 
 const PostCard = (props) => {
+ 
+
+
+
+
   return (
-    <AuthContext.Consumer>
-    {(auth) => (
+  
     <Card>
       <View
         style={{
@@ -39,13 +45,13 @@ const PostCard = (props) => {
       <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
         <Button
           type="outline"
-          title="  Like (17)"
+          title="  Like "
           icon={<AntDesign name="like2" size={24} color="dodgerblue" />}
         />
-        <Button type="solid" title="Comment (10)"
+        <Button type="solid" title="comment"
         
         onPress={function () {
-          //auth.setisLoggedIn(true);
+         
           props.navigation.navigate('IPost', props.post);
 
       }}
@@ -53,8 +59,7 @@ const PostCard = (props) => {
       </View>
       
     </Card>
-  )}
-  </AuthContext.Consumer>
+ 
 );
 };
 
